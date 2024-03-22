@@ -1,39 +1,31 @@
-import { Text, View, Image, ImageBackground, ScrollView, Button, Pressable } from "react-native";
+import { useState } from "react";
+import { Text, View, Image, ImageBackground, ScrollView, Button, Pressable, Modal } from "react-native";
 const logoImg = require("./assets/adaptive-icon.png");
 
 export default function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <View style={{ flex: 1, backgroundColor: "plum", padding: 60 }}>
-      <Pressable
-        onPress={() => {
-          console.log("Image pressed");
-        }}
+      <Button
+        title="Press"
+        onPress={() => setIsModalVisible(true)}
+        color="midnightblue"
+      />
+      <Modal
+        visible={isModalVisible}
+        onRequestClose={() => setIsModalVisible(false)}
+        animationType="slide"
+        presentationStyle="formSheet"
       >
-        <Image source={logoImg} style={{ width: 300, height: 300 }} />
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          console.log("Text pressed");
-        }}
-      >
-        <Text>
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          condimentum, nisl eu ultricies ultricies, nunc nisl aliquam nunc, eget
-          aliquam nisl nunc sit amet nisl. Donec condimentum, nisl eu ultricies
-          ultricies, nunc nisl aliquam nunc, eget aliquam nisl nunc sit amet
-          nisl. Donec condimentum, nisl eu ultricies ultricies, nunc nisl
-          aliquam nunc, eget aliquam nisl nunc sit amet nisl. Donec condimentum,
-          nisl eu ultricies ultricies, nunc nisl aliquam nunc, eget aliquam nisl
-          nunc sit amet nisl. Donec condimentum, nisl eu ultricies ultricies,
-          nunc nisl aliquam nunc, eget aliquam nisl nunc sit amet nisl. Donec
-          condimentum, nisl eu ultricies ultricies, nunc nisl aliquam nunc, eget
-          aliquam nisl nunc sit amet nisl. Donec condimentum, nisl eu ultricies
-          ultricies, nunc nisl aliquam nunc, eget aliquam nisl nunc sit amet
-          nisl. Donec condimentum, nisl eu ultricies ultricies, nunc nisl
-          aliquam nunc, eget aliquam nisl nunc sit amet nisl. Donec condimentum,
-          nisl eu ultricies
-        </Text>
-      </Pressable>
+        <View style={{ flex: 1, backgroundColor: "lightblue", padding: 60 }}>
+          <Text>Modal content</Text>
+          <Button
+            title="Close"
+            onPress={() => setIsModalVisible(false)}
+            color="midnightblue"
+          />
+        </View>
+      </Modal>
     </View>
   );
 }
