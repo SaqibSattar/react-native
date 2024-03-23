@@ -20,7 +20,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
+    justifyContent: "center",
     marginTop: 64,
     borderWidth: 6,
     borderColor: "red",
