@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
     marginTop: 64,
     borderWidth: 6,
     borderColor: "red",
