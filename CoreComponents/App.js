@@ -6,8 +6,8 @@ export default function App() {
   return (
     // <View style={{ backgroundColor: "plum", flex: 1 }}></View>
     <View style={styles.container}>
-      <Box style={{ backgroundColor: "#8e9b00", flexGrow: 2 }}>Box 1</Box>
-      <Box style={{ backgroundColor: "#b65d1f", flexGrow: 1 }}>Box 2</Box>
+      <Box style={{ backgroundColor: "#8e9b00", top: 75, left: 75 }}>Box 1</Box>
+      <Box style={{ backgroundColor: "#b65d1f", position: "absolute", top: 45, left: 45 }}>Box 2</Box>
       <Box style={{ backgroundColor: "#1c4c56" }}>Box 3</Box>
       {/* <Box style={{ backgroundColor: "#ab9156" }}>Box 4</Box>
       <Box style={{ backgroundColor: "#6b0803" }}>Box 5</Box>
