@@ -37,6 +37,7 @@ export default function App() {
           }}
           keyExtractor={(item) => item.id.toString()}
           ItemSeparatorComponent={ <View style={{ height: 16, }}  /> }
+          ListEmptyComponent={ <Text>No Items Found</Text> }
           // horizontal={true}
         />
       </View>
