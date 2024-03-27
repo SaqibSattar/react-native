@@ -6,8 +6,10 @@ import {
   ScrollView,
   FlatList,
   StatusBar,
+  SectionList,
 } from "react-native";
 import pokemonList from "./data.json";
+import groupedPokemonList from "./grouped-data.json";
 
 export default function App() {
   return (
@@ -23,7 +25,7 @@ export default function App() {
           );
         })}
       </ScrollView> */}
-      <View style={styles.scrollView}>
+      {/* <View style={styles.scrollView}>
         <FlatList
           data={pokemonList}
           renderItem={({ item }) => {
@@ -43,8 +45,37 @@ export default function App() {
           ListFooterComponent={ <Text style={styles.footerText}>End of list</Text> }
           // horizontal={true}
         />
-      </View>
-    </SafeAreaView>
+      </View> */}
+      <View style={styles.scrollView}>
+      <SectionList
+        sections={groupedPokemonList}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.card}>
+              <Text style={styles.cardText}>{item}</Text>
+            </View>
+          );
+        }}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.sectionHeaderText}>{section.type}</Text>
+        )}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{
+              height: 16,
+            }}
+          />
+        )}
+        SectionSeparatorComponent={() => (
+          <View
+            style={{
+              height: 16,
+            }}
+          />
+        )}
+      />
+    </View>
+  </SafeAreaView>
   );
 }
 
@@ -78,5 +109,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     marginTop: 12,
+  },
+  sectionHeaderText: {
+    backgroundColor: "#FFFFFF",
+    fontSize: 24,
+    fontWeight: "bold",
   },
 });
