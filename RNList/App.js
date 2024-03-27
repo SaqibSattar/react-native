@@ -32,6 +32,7 @@ export default function App() {
               <View style={styles.card}>
                 <Text style={styles.cardText}>{item.type}</Text>
                 <Text style={styles.cardText}>{item.name}</Text>
+                <Text style={styles.cardText}>{item.emoji}</Text>
               </View>
             );
           }}
@@ -58,6 +59,8 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "#FFFFFF",
+    flexDirection: "row",
+    justifyContent: "space-between",
     padding: 16,
     borderRadius: 8,
     marginBottom: 5,
