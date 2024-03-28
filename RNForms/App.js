@@ -1,13 +1,21 @@
 import { useState } from "react";
-import { StyleSheet, Text, TextInput,  View, StatusBar, Switch, Button } from "react-native";
+import { StyleSheet, Text, TextInput,  View, StatusBar, Switch, Button, Image, KeyboardAvoidingView, Platform } from "react-native";
 
 export default function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+      style={styles.container}
+    >
       <View style={styles.form}>
+        <Image
+          source={require("./assets/adaptive-icon.png")}
+          style={styles.image}
+        />
         <Text style={styles.label}>Username</Text>
         <TextInput
           style={styles.input}
@@ -30,7 +38,7 @@ export default function App() {
           }}
         />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -66,5 +74,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
     borderRadius: 5,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
+    marginBottom: 50,
   },
 });
