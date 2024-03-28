@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, StatusBar, FlatList } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, StatusBar, FlatList, ActivityIndicator } from 'react-native';
 
 export default function App() {
   const [postList, setPostList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async (limit = 10) => {
     try {
@@ -11,6 +12,7 @@ export default function App() {
       );
       const data = await response.json();
       setPostList(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -19,6 +21,15 @@ export default function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return (
+      <SafeAreaView style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -74,5 +85,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     marginTop: 12,
+  },
+  loadingContainer: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+    paddingTop: StatusBar.currentHeight,
+    justifyContent: "center", // Center the loading spinner
+    alignItems: "center", // Center the loading spinner
   },
 });
