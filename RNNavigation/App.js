@@ -44,6 +44,9 @@ export default function App() {
           name="About"
           component={AboutScreen}
           initialParams={{ name: "Guest" }}
+          // options={({ route }) => ({
+          //   title: route.params?.name,
+          // })}
         />
       </Stack.Navigator>
     </NavigationContainer>
